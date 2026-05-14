@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights - TRC Capital Partners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* =====================================================
+       HOW TO ADD A NEW INSIGHT POST:
+       Copy one .insight-card div below and paste it at
+       the TOP of .insights-grid (newest first).
+       Update: category, date, title, excerpt, and link.
+       For the image: add a real URL or use a placeholder.
+       ===================================================== */
+    .insights-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--gray); }
+    .insight-card {
+      background:var(--white);
+      display:flex; flex-direction:column;
+      opacity:0; transform:translateY(14px);
+      transition:opacity 0.55s ease, transform 0.55s ease;
+    }
+    .insight-card.visible { opacity:1; transform:translateY(0); }
+    .insight-card-img { width:100%; height:220px; object-fit:cover; background:var(--gray-light); background-size:cover; background-position:center; }
+    .insight-card-body { padding:1.8rem; flex:1; display:flex; flex-direction:column; }
+    .insight-meta { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
+    .insight-cat { font-size:0.6rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--blue); background:var(--sky); padding:0.25rem 0.7rem; }
+    .insight-date { font-size:0.68rem; color:var(--text-light); }
+    .insight-card h3 { font-size:1.1rem; margin-bottom:0.8rem; line-height:1.3; }
+    .insight-card p { font-size:0.84rem; color:var(--text-mid); flex:1; margin:0 0 1.2rem; }
+    .insight-link { font-size:0.62rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blue); border-bottom:1px solid currentColor; padding-bottom:1px; align-self:flex-start; transition:opacity 0.2s; }
+    .insight-link:hover { opacity:0.65; }
+    .insight-featured {
+      grid-column:1/-1;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      background:var(--white);
+    }
+    .insight-featured-img { background-size:cover; background-position:center; min-height:360px; }
+    .insight-featured-body { padding:3rem; display:flex; flex-direction:column; justify-content:center; }
+    .insight-featured-body h2 { font-size:1.8rem; margin-bottom:1rem; }
+    @media(max-width:900px){ .insights-grid { grid-template-columns:1fr; } .insight-featured { grid-template-columns:1fr; } .insight-featured-img { min-height:240px; } }
+  </style>
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <a href="index.html" class="nav-logo"><img src="trc-logo.webp" alt="TRC Capital Partners" style="height:40px;width:auto;"></a>
+  <div class="nav-links">
+    <a href="about.html">About</a><a href="portfolio.html">Portfolio</a><a href="team.html">Team</a>
+    <a href="why-texas.html">Why Texas</a><a href="insights.html" class="active">Insights</a><a href="contact.html">Contact</a>
+    <a href="investors.html" class="btn btn-blue nav-cta" style="padding:0.6rem 1.4rem;">Investor Login</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileMenu">x</button>
+  <button class="mobile-close" id="mobileClose">x</button>
+  <a href="about.html">About</a><a href="portfolio.html">Portfolio</a><a href="team.html">Team</a>
+  <a href="why-texas.html">Why Texas</a><a href="insights.html">Insights</a><a href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1800&q=80');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <h1>Insights</h1>
+    <p>Market perspectives, asset updates, and commentary from the TRC team.</p>
+  </div>
+</section>
+
+<section class="section white">
+  <div class="container">
+    <div class="section-header" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;">
+      <div>
+        <span class="overline">Latest</span>
+        <h2>News and Perspectives</h2>
+        <span class="rule"></span>
+      </div>
+      <!-- Filter buttons - update these as needed -->
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+        <button onclick="filterPosts('all')" class="btn btn-navy" style="padding:0.5rem 1rem;font-size:0.6rem;" id="filter-all">All</button>
+        <button onclick="filterPosts('market')" class="btn btn-outline" style="padding:0.5rem 1rem;font-size:0.6rem;" id="filter-market">Market</button>
+        <button onclick="filterPosts('portfolio')" class="btn btn-outline" style="padding:0.5rem 1rem;font-size:0.6rem;" id="filter-portfolio">Portfolio</button>
+        <button onclick="filterPosts('company')" class="btn btn-outline" style="padding:0.5rem 1rem;font-size:0.6rem;" id="filter-company">Company</button>
+      </div>
+    </div>
+
+    <!-- ================================================
+         INSIGHT POSTS -- ADD NEW ONES AT THE TOP
+         Copy a card, paste above the first card,
+         update content. Newest posts appear first.
+         ================================================ -->
+    <div class="insights-grid" id="insightsGrid">
+
+      <!-- FEATURED POST (spans full width) -->
+      <div class="insight-card insight-featured" data-category="market">
+        <div class="insight-featured-img" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1000&q=80');"></div>
+        <div class="insight-featured-body">
+          <span style="font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--blue);background:var(--sky);padding:0.25rem 0.7rem;display:inline-block;margin-bottom:1rem;">Market Outlook</span>
+          <h2>Houston Office Market: Resilience in the Face of National Headwinds</h2>
+          <span class="rule"></span>
+          <p style="font-size:0.9rem;color:var(--text-mid);">While national office vacancy rates have climbed post-pandemic, Houston's downtown market has shown notable resilience, driven by its energy sector stability, affordable cost of occupancy, and a renewed flight to quality in Class A and historic buildings. TRC's portfolio has outperformed broader market trends.</p>
+          <a href="#" class="insight-link" style="margin-top:0.5rem;">Read More</a>
+        </div>
+      </div>
+
+      <!-- POST 2 -->
+      <div class="insight-card" data-category="portfolio">
+        <div class="insight-card-img" style="background-image:url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80');"></div>
+        <div class="insight-card-body">
+          <div class="insight-meta">
+            <span class="insight-cat">Portfolio</span>
+            <span class="insight-date">Q1 2025</span>
+          </div>
+          <h3>Fernweh: A New Model for Texas Hospitality</h3>
+          <p>How TRC's boutique hospitality investment on the Guadalupe River is redefining the short-term rental experience in New Braunfels and the broader Texas Hill Country.</p>
+          <a href="https://www.stayfernweh.com" target="_blank" class="insight-link">Visit Fernweh</a>
+        </div>
+      </div>
+
+      <!-- POST 3 -->
+      <div class="insight-card" data-category="market">
+        <div class="insight-card-img" style="background-image:url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80');"></div>
+        <div class="insight-card-body">
+          <div class="insight-meta">
+            <span class="insight-cat">Market</span>
+            <span class="insight-date">Q4 2024</span>
+          </div>
+          <h3>Flight to Quality: Why Tenants Are Upgrading Their Office Space</h3>
+          <p>Across Houston's office market, tenants are consolidating into fewer but higher-quality spaces. Historic and well-amenitized buildings are capturing an outsized share of leasing activity.</p>
+          <a href="#" class="insight-link">Read More</a>
+        </div>
+      </div>
+
+      <!-- POST 4 -->
+      <div class="insight-card" data-category="company">
+        <div class="insight-card-img" style="background-image:url('regions.jpg');"></div>
+        <div class="insight-card-body">
+          <div class="insight-meta">
+            <span class="insight-cat">Company</span>
+            <span class="insight-date">Q3 2024</span>
+          </div>
+          <h3>TRC Completes Lobby Renovation at 1001 McKinney</h3>
+          <p>The newly renovated lobby at 1001 McKinney, featuring the Tim Huhn mural and Gensler-designed interiors , was named a Houston Business Journal Landmark Award finalist in the Historic Renovation category.</p>
+          <a href="#" class="insight-link">Read More</a>
+        </div>
+      </div>
+
+      <!-- POST 5 -->
+      <div class="insight-card" data-category="market">
+        <div class="insight-card-img" style="background-image:url('https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&q=80');"></div>
+        <div class="insight-card-body">
+          <div class="insight-meta">
+            <span class="insight-cat">Market</span>
+            <span class="insight-date">Q2 2024</span>
+          </div>
+          <h3>Texas Population Growth and What It Means for Commercial Real Estate</h3>
+          <p>Texas adds over 1,000 new residents per day. We examine how sustained in-migration is shaping demand for office, retail, and mixed-use real estate across Houston's submarkets.</p>
+          <a href="#" class="insight-link">Read More</a>
+        </div>
+      </div>
+
+      <!-- POST 6 -->
+      <div class="insight-card" data-category="portfolio">
+        <div class="insight-card-img" style="background-image:url('galaxy.jpg');"></div>
+        <div class="insight-card-body">
+          <div class="insight-meta">
+            <span class="insight-cat">Portfolio</span>
+            <span class="insight-date">Q1 2024</span>
+          </div>
+          <h3>Expanding the TRC Portfolio: Galaxy and Lockwood</h3>
+          <p>TRC has added Galaxy and Lockwood to its Houston office portfolio, continuing the firm's disciplined strategy of acquiring well-located assets with value-add potential in Houston's inner loop.</p>
+          <a href="#" class="insight-link">Read More</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section cream" style="text-align:center;">
+  <div class="container" style="max-width:580px;">
+    <span class="overline">Stay Informed</span>
+    <h2>Receive TRC Market Updates</h2>
+    <span class="rule centered"></span>
+    <p>Sign up to receive TRC's quarterly market commentary and portfolio updates directly to your inbox.</p>
+    <form style="display:flex;gap:0.5rem;margin-top:1.5rem;flex-wrap:wrap;justify-content:center;" onsubmit="event.preventDefault();this.innerHTML='<p style=color:var(--blue);font-weight:600;>Thank you. We will be in touch.</p>';">
+      <input type="email" required placeholder="Your email address" style="flex:1;min-width:220px;border:none;border-bottom:2px solid var(--navy);padding:0.7rem 0.5rem;font-family:var(--font-body);font-size:0.9rem;outline:none;background:transparent;">
+      <button type="submit" class="btn btn-navy">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand"><img src="trc-logo.webp" alt="TRC Capital Partners" style="height:40px;width:auto;margin-bottom:1.2rem;"><p>A privately held Texas real estate investment firm.</p></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About TRC</a><a href="team.html">Our Team</a><a href="why-texas.html">Why Texas</a><a href="insights.html">Insights</a></div>
+      <div class="footer-col"><h4>Portfolio</h4><a href="portfolio.html">1001 McKinney</a><a href="portfolio.html">Regions Financial Center</a><a href="portfolio.html">Fernweh</a><a href="portfolio.html">Galaxy</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="tel:7132661899">713.266.1899</a><a href="mailto:admin@trccapitalpartners.com">admin@trccapitalpartners.com</a><a href="investors.html">Investor Login</a></div>
+    </div>
+    <div class="footer-bottom"><span>2025 TRC Capital Partners, LLC. All rights reserved.</span><span>Houston, Texas</span></div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+  document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+
+  function filterPosts(cat) {
+    const cards = document.querySelectorAll('.insight-card');
+    const btns = document.querySelectorAll('[id^="filter-"]');
+    btns.forEach(b => { b.className = 'btn btn-outline'; b.style.padding='0.5rem 1rem'; b.style.fontSize='0.6rem'; });
+    document.getElementById('filter-'+cat).className = 'btn btn-navy';
+    cards.forEach(c => {
+      if(cat === 'all' || c.dataset.category === cat) { c.style.display=''; } else { c.style.display='none'; }
+    });
+  }
+
+  const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:0.05});
+  document.querySelectorAll('.insight-card').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

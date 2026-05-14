@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - TRC Capital Partners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="trc-logo.webp" alt="TRC Capital Partners">
+    <span class="nav-logo-text" style="color:var(--navy);">TRC Capital<br>Partners</span>
+  </a>
+  <div class="nav-links">
+    <a href="about.html">About</a><a href="portfolio.html">Portfolio</a><a href="team.html">Team</a><a href="contact.html" class="active">Contact</a>
+    <a href="contact.html" class="btn btn-blue nav-cta" style="padding:0.6rem 1.4rem;">Inquire</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">x</button>
+  <a href="about.html">About</a><a href="portfolio.html">Portfolio</a><a href="team.html">Team</a><a href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1800&q=80');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <h1>Contact Us</h1>
+    <p>We welcome conversations with investors, tenants, and prospective partners.</p>
+  </div>
+</section>
+
+<section class="section white">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="overline">Get in Touch</span>
+        <h2>We Look Forward to Hearing from You</h2>
+        <span class="rule"></span>
+        <p>Whether you are an institutional investor exploring co-investment opportunities, a high-net-worth individual interested in our investment platforms, or a prospective tenant looking for office space, we welcome the conversation. Please fill out the form below and a member of our team will be in touch promptly.</p>
+
+        <form id="contactForm" style="margin-top:2rem;">
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" required placeholder="Jane"></div>
+            <div class="form-group"><label>Last Name</label><input type="text" required placeholder="Smith"></div>
+          </div>
+          <div class="form-group"><label>Company</label><input type="text" placeholder="Firm or Organization"></div>
+          <div class="form-group"><label>Email</label><input type="email" required placeholder="jane@example.com"></div>
+          <div class="form-group"><label>Phone</label><input type="tel" placeholder="(713) 555-0100"></div>
+          <div class="form-group">
+            <label>I am interested in</label>
+            <select>
+              <option value="">Select...</option>
+              <option>Investment Opportunities</option>
+              <option>Office Leasing</option>
+              <option>Asset Management Partnership</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Message</label><textarea placeholder="Tell us more about your inquiry..."></textarea></div>
+          <button type="submit" class="btn btn-blue" style="width:100%;margin-top:0.5rem;">Send Message</button>
+        </form>
+
+        <div id="formSuccess" style="display:none;margin-top:1.5rem;padding:2rem;border-left:3px solid var(--blue);background:var(--sky);">
+          <h3 style="margin-bottom:0.5rem;font-size:1.2rem;">Thank you for reaching out.</h3>
+          <p style="margin:0;">A member of the TRC team will be in touch with you shortly.</p>
+        </div>
+      </div>
+
+      <div>
+        <div style="background:var(--cream);padding:2.5rem;margin-bottom:2rem;">
+          <span class="overline">Office</span>
+          <h3 style="font-size:1.1rem;margin-bottom:1.5rem;">TRC Capital Partners</h3>
+          <div class="contact-detail"><span class="contact-detail-label">Address</span><span>1001 McKinney St, Suite 525<br>Houston, TX 77002</span></div>
+          <div class="contact-detail"><span class="contact-detail-label">Phone</span><a href="tel:7132661899" style="color:var(--blue);">713.266.1899</a></div>
+          <div class="contact-detail"><span class="contact-detail-label">Email</span><a href="mailto:admin@trccapitalpartners.com" style="color:var(--blue);">admin@trccapitalpartners.com</a></div>
+          <div class="contact-detail" style="border:none;"><span class="contact-detail-label">LinkedIn</span><a href="https://www.linkedin.com/company/trccapitalpartners/" target="_blank" style="color:var(--blue);">TRC Capital Partners</a></div>
+        </div>
+
+        <div style="background:var(--navy);padding:2.5rem;">
+          <span class="overline" style="color:var(--blue-light);">Investors</span>
+          <h3 style="color:var(--white);font-size:1.1rem;margin-bottom:1rem;">Institutional and Private Investors</h3>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.86rem;margin-bottom:1.5rem;">TRC works with a select group of institutional partners and high-net-worth investors. If you are interested in co-investment opportunities or learning more about our investment platform, we encourage you to reach out directly.</p>
+          <a href="mailto:admin@trccapitalpartners.com" class="btn btn-blue" style="font-size:0.62rem;">Investor Inquiries</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand"><img src="trc-logo.webp" alt="TRC Capital Partners"><p>TRC Capital Partners is a privately held Texas real estate investment firm specializing in acquisitions, development, and active asset management.</p></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About TRC</a><a href="team.html">Our Team</a><a href="portfolio.html">Portfolio</a><a href="contact.html">Contact</a></div>
+      <div class="footer-col"><h4>Portfolio</h4><a href="portfolio.html">1001 McKinney</a><a href="portfolio.html">Regions Financial Center</a><a href="portfolio.html">Fernweh</a><a href="portfolio.html">Galaxy</a><a href="portfolio.html">Lockwood</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="tel:7132661899">713.266.1899</a><a href="mailto:admin@trccapitalpartners.com">admin@trccapitalpartners.com</a><a>1001 McKinney St, Suite 525, Houston, TX 77002</a></div>
+    </div>
+    <div class="footer-bottom"><span>2025 TRC Capital Partners, LLC. All rights reserved.</span><span>Houston, Texas</span></div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+  document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  });
+</script>
+</body>
+</html>

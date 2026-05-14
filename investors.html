@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investor Access - TRC Capital Partners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .login-page { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; }
+    .login-left {
+      background:var(--navy);
+      display:flex; flex-direction:column;
+      justify-content:space-between;
+      padding:4rem;
+      position:relative; overflow:hidden;
+    }
+    .login-left::before {
+      content:'';
+      position:absolute; inset:0;
+      background:url('regions.jpg') center/cover no-repeat;
+      opacity:0.12;
+    }
+    .login-left-content { position:relative; z-index:2; }
+    .login-left h2 { color:var(--white); font-size:2.2rem; margin-bottom:1rem; }
+    .login-left p { color:rgba(255,255,255,0.6); font-size:0.88rem; }
+    .login-divider { width:40px; height:2px; background:var(--blue-light); margin:1.2rem 0; }
+    .login-right {
+      background:var(--white);
+      display:flex; align-items:center; justify-content:center;
+      padding:4rem;
+    }
+    .login-box { width:100%; max-width:420px; }
+    .login-box h3 { margin-bottom:0.4rem; }
+    .login-box .sub { font-size:0.84rem; color:var(--text-light); margin-bottom:2rem; }
+    .login-error { display:none; color:#a33; font-size:0.82rem; margin-bottom:1rem; }
+
+    .portal-content { display:none; }
+    .portal-content.unlocked { display:block; }
+
+    .doc-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; margin-top:2rem; }
+    .doc-item {
+      display:flex; align-items:center; gap:1rem;
+      padding:1.2rem 1.5rem;
+      background:var(--cream);
+      border:1px solid var(--border);
+      font-size:0.82rem; font-weight:500; color:var(--text);
+      cursor:pointer;
+      transition:background 0.25s, border-color 0.25s;
+    }
+    .doc-item:hover { background:var(--blue); color:var(--white); border-color:var(--blue); }
+    .doc-icon-svg { width:18px; height:18px; opacity:0.5; flex-shrink:0; }
+    .doc-item:hover .doc-icon-svg { opacity:1; filter:brightness(10); }
+
+    @media(max-width:768px) {
+      .login-page { grid-template-columns:1fr; }
+      .login-left { display:none; }
+      .login-right { padding:3rem 2rem; min-height:100vh; }
+      .doc-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <a href="index.html" class="nav-logo"><img src="trc-logo.webp" alt="TRC Capital Partners" style="height:40px;width:auto;"></a>
+  <div class="nav-links">
+    <a href="about.html">About</a><a href="portfolio.html">Portfolio</a><a href="team.html">Team</a>
+    <a href="why-texas.html">Why Texas</a><a href="insights.html">Insights</a><a href="contact.html">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">x</button>
+  <a href="about.html">About</a><a href="portfolio.html">Portfolio</a><a href="team.html">Team</a>
+  <a href="why-texas.html">Why Texas</a><a href="insights.html">Insights</a><a href="contact.html">Contact</a>
+</div>
+
+<!-- LOGIN GATE -->
+<div id="loginGate">
+  <div class="login-page">
+    <div class="login-left">
+      <div class="login-left-content">
+        <img src="trc-logo.webp" alt="TRC Capital Partners" style="height:48px;width:auto;margin-bottom:3rem;">
+        <h2>Investor Access Portal</h2>
+        <div class="login-divider"></div>
+        <p>Secure access to TRC Capital Partners investor documents, quarterly reports, and portfolio updates. For access requests, please contact us directly.</p>
+      </div>
+      <div style="position:relative;z-index:2;">
+        <p style="font-size:0.72rem;color:rgba(255,255,255,0.3);letter-spacing:0.08em;">Need access? Contact us at<br><a href="mailto:admin@trccapitalpartners.com" style="color:var(--blue-light);">admin@trccapitalpartners.com</a></p>
+      </div>
+    </div>
+    <div class="login-right">
+      <div class="login-box">
+        <img src="trc-logo.webp" alt="TRC Capital Partners" style="height:40px;width:auto;margin-bottom:2rem;">
+        <h3>Investor Login</h3>
+        <p class="sub">Enter your credentials to access investor materials.</p>
+        <p class="login-error" id="loginError">Incorrect password. Please try again or contact admin@trccapitalpartners.com.</p>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="investorPassword" placeholder="Enter your password" style="width:100%;border:none;border-bottom:2px solid #ccc;padding:0.7rem 0;font-family:var(--font-body);font-size:0.9rem;outline:none;background:transparent;transition:border-color 0.25s;">
+        </div>
+        <button onclick="checkInvestorLogin()" class="btn btn-blue" style="width:100%;margin-top:1rem;">Access Portal</button>
+        <p style="margin-top:1.5rem;font-size:0.75rem;color:var(--text-light);">This portal is for authorized investors only. Unauthorized access is prohibited. All activity is logged.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTAL CONTENT (shown after login) -->
+<div class="portal-content" id="portalContent">
+  <section class="section white" style="padding-top:8rem;">
+    <div class="container">
+      <div class="section-header" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <span class="overline">Investor Portal</span>
+          <h2>Welcome</h2>
+          <span class="rule"></span>
+          <p style="max-width:600px;">Below you will find TRC Capital Partners investor documents, quarterly updates, and portfolio materials. For questions, contact Kellie Jenks or Steve Lerner directly.</p>
+        </div>
+        <button onclick="logout()" class="btn btn-outline" style="font-size:0.62rem;">Sign Out</button>
+      </div>
+
+      <!-- DOCUMENTS - ADD NEW DOCS BY COPYING A .doc-item -->
+      <div class="doc-grid">
+        <a href="#" class="doc-item">
+          <svg class="doc-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Q1 2025 Investor Update
+        </a>
+        <a href="#" class="doc-item">
+          <svg class="doc-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          2024 Annual Report
+        </a>
+        <a href="#" class="doc-item">
+          <svg class="doc-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Portfolio Summary, Q1 2025
+        </a>
+        <a href="#" class="doc-item">
+          <svg class="doc-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          1001 McKinney Asset Update
+        </a>
+        <a href="#" class="doc-item">
+          <svg class="doc-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2"/><polyline points="14 2 14 8 20 8"/></svg>
+          Regions Financial Center Asset Update
+        </a>
+        <a href="#" class="doc-item">
+          <svg class="doc-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Fernweh Asset Update
+        </a>
+      </div>
+
+      <div style="margin-top:4rem;padding:2.5rem;background:var(--sky);border-left:3px solid var(--blue);">
+        <span class="overline">Direct Contact</span>
+        <h3 style="margin-bottom:1rem;font-size:1.1rem;">Questions? Contact the Team Directly</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;">
+          <div><strong style="display:block;margin-bottom:0.3rem;">Steve Lerner</strong><span style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);display:block;margin-bottom:0.5rem;">CEO</span><a href="mailto:admin@trccapitalpartners.com" style="font-size:0.84rem;color:var(--blue);">admin@trccapitalpartners.com</a></div>
+          <div><strong style="display:block;margin-bottom:0.3rem;">Kellie Jenks</strong><span style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);display:block;margin-bottom:0.5rem;">President</span><a href="mailto:admin@trccapitalpartners.com" style="font-size:0.84rem;color:var(--blue);">admin@trccapitalpartners.com</a></div>
+          <div><strong style="display:block;margin-bottom:0.3rem;">Main Office</strong><span style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);display:block;margin-bottom:0.5rem;">Houston, TX</span><a href="tel:7132661899" style="font-size:0.84rem;color:var(--blue);">713.266.1899</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand"><img src="trc-logo.webp" alt="TRC Capital Partners" style="height:40px;width:auto;margin-bottom:1.2rem;"><p>A privately held Texas real estate investment firm.</p></div>
+        <div class="footer-col"><h4>Company</h4><a href="about.html">About TRC</a><a href="team.html">Our Team</a><a href="why-texas.html">Why Texas</a><a href="insights.html">Insights</a></div>
+        <div class="footer-col"><h4>Portfolio</h4><a href="portfolio.html">1001 McKinney</a><a href="portfolio.html">Regions Financial Center</a><a href="portfolio.html">Fernweh</a></div>
+        <div class="footer-col"><h4>Contact</h4><a href="tel:7132661899">713.266.1899</a><a href="mailto:admin@trccapitalpartners.com">admin@trccapitalpartners.com</a></div>
+      </div>
+      <div class="footer-bottom"><span>2025 TRC Capital Partners, LLC. All rights reserved.</span><span>Houston, Texas</span></div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+  document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+
+  document.getElementById('investorPassword').addEventListener('keypress', e => { if(e.key==='Enter') checkInvestorLogin(); });
+
+  function checkInvestorLogin() {
+    // TO CHANGE THE INVESTOR PASSWORD: update the string below
+    const password = 'TRC2025Investor';
+    if (document.getElementById('investorPassword').value === password) {
+      document.getElementById('loginGate').style.display = 'none';
+      document.getElementById('portalContent').classList.add('unlocked');
+      sessionStorage.setItem('trc_investor', '1');
+    } else {
+      document.getElementById('loginError').style.display = 'block';
+    }
+  }
+
+  function logout() {
+    sessionStorage.removeItem('trc_investor');
+    document.getElementById('loginGate').style.display = 'block';
+    document.getElementById('portalContent').classList.remove('unlocked');
+    document.getElementById('investorPassword').value = '';
+  }
+
+  // Persist login within session
+  if (sessionStorage.getItem('trc_investor')) {
+    document.getElementById('loginGate').style.display = 'none';
+    document.getElementById('portalContent').classList.add('unlocked');
+  }
+</script>
+</body>
+</html>

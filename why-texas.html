@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Texas - TRC Capital Partners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .data-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--gray); margin:3rem 0; }
+    .data-card { background:var(--white); padding:2.5rem 2rem; text-align:center; border-top:3px solid transparent; transition:border-color 0.3s; }
+    .data-card:hover { border-color:var(--blue); }
+    .data-num { display:block; font-family:var(--font-display); font-size:3rem; font-weight:300; color:var(--navy); line-height:1; margin-bottom:0.5rem; }
+    .data-label { font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); }
+    .data-source { font-size:0.65rem; color:var(--text-light); margin-top:0.4rem; display:block; }
+    .reason-list { list-style:none; margin:0; padding:0; }
+    .reason-item { display:grid; grid-template-columns:auto 1fr; gap:1.5rem; padding:1.8rem 0; border-bottom:1px solid var(--gray); align-items:start; }
+    .reason-num { font-family:var(--font-display); font-size:2rem; font-weight:300; color:var(--blue); line-height:1; padding-top:0.2rem; }
+    .reason-item h3 { font-size:1.1rem; margin-bottom:0.4rem; }
+    .reason-item p { margin:0; font-size:0.86rem; }
+    @media(max-width:768px){ .data-grid { grid-template-columns:repeat(2,1fr); } }
+  </style>
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <a href="index.html" class="nav-logo"><img src="trc-logo.webp" alt="TRC Capital Partners" style="height:40px;width:auto;"></a>
+  <div class="nav-links">
+    <a href="about.html">About</a><a href="portfolio.html">Portfolio</a><a href="team.html">Team</a>
+    <a href="why-texas.html" class="active">Why Texas</a><a href="insights.html">Insights</a><a href="contact.html">Contact</a>
+    <a href="investors.html" class="btn btn-blue nav-cta" style="padding:0.6rem 1.4rem;">Investor Login</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">x</button>
+  <a href="about.html">About</a><a href="portfolio.html">Portfolio</a><a href="team.html">Team</a>
+  <a href="why-texas.html">Why Texas</a><a href="insights.html">Insights</a><a href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=1800&q=80');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <h1>Why Texas</h1>
+    <p>The most compelling real estate investment opportunity in the United States.</p>
+  </div>
+</section>
+
+<section class="section white">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="overline">The Case for Texas</span>
+      <h2>A Market Built for Long-Term Growth</h2>
+      <span class="gold-line" style="display:block;width:40px;height:2px;background:var(--blue);margin:1rem auto 1.6rem;"></span>
+      <p style="max-width:680px;margin:0 auto;">TRC's exclusive focus on Texas is not a constraint; it is a deliberate competitive advantage. We know this market deeply, and we believe it offers some of the most compelling risk-adjusted real estate returns in the country.</p>
+    </div>
+
+    <div class="data-grid">
+      <div class="data-card reveal"><span class="data-num">2nd</span><span class="data-label">Largest State Economy in the US</span><span class="data-source">US Bureau of Economic Analysis</span></div>
+      <div class="data-card reveal"><span class="data-num">1,000+</span><span class="data-label">People Move to Texas Every Day</span><span class="data-source">US Census Bureau</span></div>
+      <div class="data-card reveal"><span class="data-num">No</span><span class="data-label">State Income Tax</span><span class="data-source">Texas Comptroller</span></div>
+      <div class="data-card reveal"><span class="data-num">4th</span><span class="data-label">Fastest Growing Major City, Houston</span><span class="data-source">US Census Bureau</span></div>
+      <div class="data-card reveal"><span class="data-num">27</span><span class="data-label">Fortune 500 Companies Headquartered in Texas</span><span class="data-source">Fortune 500, 2024</span></div>
+      <div class="data-card reveal"><span class="data-num">Top 5</span><span class="data-label">US Metro for Job Growth, Houston</span><span class="data-source">Bureau of Labor Statistics</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="quote-band">
+  <div class="container">
+    <blockquote>"Texas has emerged as one of the most dynamic economic regions in the world, driven by energy, technology, healthcare, and a relentless entrepreneurial culture."</blockquote>
+  </div>
+</div>
+
+<section class="section cream">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="overline">Our View</span>
+        <h2>Why TRC Invests Exclusively in Texas</h2>
+        <span class="rule"></span>
+        <ul class="reason-list">
+          <li class="reason-item">
+            <span class="reason-num">01</span>
+            <div><h3>Population and Job Growth</h3><p>Texas adds more people and jobs than virtually any other state. Houston alone is home to the world's largest medical complex, a leading energy industry, and a rapidly growing technology sector, all driving consistent demand for quality office and commercial space.</p></div>
+          </li>
+          <li class="reason-item">
+            <span class="reason-num">02</span>
+            <div><h3>Business-Friendly Environment</h3><p>No state income tax, a streamlined regulatory environment, and a government actively competing for corporate relocations make Texas the destination of choice for businesses of all sizes. Every major relocation means more demand for the office assets TRC owns and operates.</p></div>
+          </li>
+          <li class="reason-item">
+            <span class="reason-num">03</span>
+            <div><h3>Diversified Economy</h3><p>Texas's economy spans energy, healthcare, technology, finance, and manufacturing. That diversification insulates the market from single-sector shocks and creates steady, broad-based demand for commercial real estate across Houston and beyond.</p></div>
+          </li>
+          <li class="reason-item">
+            <span class="reason-num">04</span>
+            <div><h3>Deep Local Knowledge</h3><p>TRC has operated exclusively in Texas since 1990. Our relationships, market knowledge, and deal flow are the direct result of 35 years of focused presence in this market. We do not try to be everywhere; we are committed to knowing Texas better than anyone.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=800&q=80" alt="Texas skyline" style="width:100%;height:300px;object-fit:cover;margin-bottom:2px;">
+        <img src="regions.jpg" alt="Houston real estate" style="width:100%;height:300px;object-fit:cover;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section navy" style="text-align:center;">
+  <div class="container" style="max-width:680px;">
+    <span class="overline" style="color:var(--blue-light);">Invest With Us</span>
+    <h2 style="color:var(--white);margin-bottom:1rem;">Ready to Put Capital to Work in Texas?</h2>
+    <span class="rule centered" style="background:var(--blue-light);"></span>
+    <p style="color:rgba(255,255,255,0.65);margin-bottom:2rem;">TRC partners with institutional investors and high-net-worth individuals to deploy capital in compelling Texas real estate opportunities. We welcome the conversation.</p>
+    <div class="btn-row" style="justify-content:center;">
+      <a href="contact.html" class="btn btn-blue">Contact Us</a>
+      <a href="investors.html" class="btn btn-ghost">Investor Login</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand"><img src="trc-logo.webp" alt="TRC Capital Partners" style="height:40px;width:auto;margin-bottom:1.2rem;"><p>A privately held Texas real estate investment firm. Acquisitions. Development. Management.</p></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About TRC</a><a href="team.html">Our Team</a><a href="why-texas.html">Why Texas</a><a href="insights.html">Insights</a></div>
+      <div class="footer-col"><h4>Portfolio</h4><a href="portfolio.html">1001 McKinney</a><a href="portfolio.html">Regions Financial Center</a><a href="portfolio.html">Fernweh</a><a href="portfolio.html">Galaxy</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="tel:7132661899">713.266.1899</a><a href="mailto:admin@trccapitalpartners.com">admin@trccapitalpartners.com</a><a href="investors.html">Investor Login</a></div>
+    </div>
+    <div class="footer-bottom"><span>2025 TRC Capital Partners, LLC. All rights reserved.</span><span>Houston, Texas</span></div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+  document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+  const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:0.1});
+  document.querySelectorAll('.data-card,.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
