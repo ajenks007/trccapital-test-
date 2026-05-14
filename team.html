@@ -7,23 +7,113 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .team-grid-v2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4rem 6rem;
+      max-width: 900px;
+      margin: 3rem auto 0;
+    }
+    .team-card-v2 {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .team-card-v2.visible { opacity: 1; transform: translateY(0); }
+    .team-headshot {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      margin-bottom: 1.4rem;
+      filter: grayscale(15%);
+      transition: filter 0.3s;
+    }
+    .team-card-v2:hover .team-headshot { filter: grayscale(0%); }
+    .team-card-v2 h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.2rem;
+    }
+    .team-card-v2 .title-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .team-card-v2 .bio {
+      font-size: 0.86rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+    .team-card-v2 .bio.collapsed {
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .read-toggle {
+      background: none;
+      border: none;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      cursor: pointer;
+      padding: 0;
+      margin-top: 0.6rem;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .read-toggle:hover { opacity: 0.65; }
+    .linkedin-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 0.8rem;
+      transition: opacity 0.2s;
+    }
+    .linkedin-btn:hover { opacity: 0.65; }
+    @media (max-width: 700px) {
+      .team-grid-v2 { grid-template-columns: 1fr; gap: 3rem; }
+    }
+  </style>
 </head>
 <body>
 
 <nav class="nav scrolled" id="nav">
   <a href="index.html" class="nav-logo">
-    <img src="trc-logo.webp" alt="TRC Capital Partners">
-    <span class="nav-logo-text" style="color:var(--navy);">TRC Capital<br>Partners</span>
+    <img src="trc-logo.webp" alt="TRC Capital Partners" style="height:40px;width:auto;">
   </a>
   <div class="nav-links">
-    <a href="about.html">About</a><a href="portfolio.html">Portfolio</a><a href="team.html" class="active">Team</a><a href="contact.html">Contact</a>
-    <a href="contact.html" class="btn btn-blue nav-cta" style="padding:0.6rem 1.4rem;">Inquire</a>
+    <a href="about.html">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="team.html" class="active">Team</a>
+    <a href="why-texas.html">Why Texas</a>
+    <a href="insights.html">Insights</a>
+    <a href="contact.html">Contact</a>
+    <a href="investors.html" class="btn btn-blue nav-cta" style="padding:0.6rem 1.4rem;">Investor Login</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" id="mobileClose">x</button>
-  <a href="about.html">About</a><a href="portfolio.html">Portfolio</a><a href="team.html">Team</a><a href="contact.html">Contact</a>
+  <a href="about.html">About</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="team.html">Team</a>
+  <a href="why-texas.html">Why Texas</a>
+  <a href="insights.html">Insights</a>
+  <a href="contact.html">Contact</a>
 </div>
 
 <section class="page-hero">
@@ -44,34 +134,38 @@
       <p style="max-width:580px;margin:0 auto;">With a team that has worked together for over a decade, TRC brings a rare combination of institutional expertise and entrepreneurial execution to every investment.</p>
     </div>
 
-    <!-- TO ADD A NEW TEAM MEMBER: copy one .team-card div below and update the name, title, bio, and photo URL -->
-    <div class="team-grid">
+    <div class="team-grid-v2">
 
-      <div class="team-card">
-        <div class="team-photo" style="background-image:url('steve-lerner.webp');
-        <h3 class="team-name">Steve Lerner</h3>
-        <span class="team-title">Chief Executive Officer</span>
-        <p class="team-bio collapsed" id="bio-lerner">Steve Lerner serves as the CEO of TRC Capital Partners, LLC and TRC Ventures, LP (formerly The Redstone Companies, L.P.). Steve previously held the position of CEO of Redstone Companies Real Estate, LLC and Executive Vice President and General Counsel of The Redstone Companies, and served as an Executive Vice President of numerous Redstone-related entities. Prior to joining Redstone in 1998, Steve was a partner at the Houston law firm now known as Schlanger Silver LLP. Steve graduated with honors in Government from the University of Texas and is an honors graduate of the University of Texas School of Law in Austin, where he was a member of The Texas Law Review. Steve serves as the Chairman of the Board of Directors of Harris County Improvement District #1 (the Uptown District) and on the Board of Directors of Veritex Holdings, Inc. (NASDAQ: VBTX) and Veritex Community Bank.</p>
-        <button class="team-toggle" onclick="toggleBio('lerner', this)">Read More</button>
-        <a href="https://www.linkedin.com/company/trccapitalpartners/" target="_blank" class="linkedin-link">LinkedIn</a>
+      <!-- STEVE LERNER -->
+      <div class="team-card-v2">
+        <img class="team-headshot" src="steve-lerner.webp" alt="Steve Lerner, CEO of TRC Capital Partners">
+        <h3>Steve Lerner</h3>
+        <span class="title-label">Chief Executive Officer</span>
+        <p class="bio collapsed" id="bio-lerner">Steve Lerner serves as the CEO of TRC Capital Partners, LLC and TRC Ventures, LP (formerly The Redstone Companies, L.P.). Steve previously held the position of CEO of Redstone Companies Real Estate, LLC and Executive Vice President and General Counsel of The Redstone Companies. Prior to joining Redstone in 1998, Steve was a partner at the Houston law firm now known as Schlanger Silver LLP. Steve graduated with honors in Government from the University of Texas and is an honors graduate of the University of Texas School of Law in Austin, where he was a member of The Texas Law Review. Steve serves as the Chairman of the Board of Directors of Harris County Improvement District #1 (the Uptown District) and on the Board of Directors of Veritex Holdings, Inc. (NASDAQ: VBTX) and Veritex Community Bank.</p>
+        <button class="read-toggle" onclick="toggleBio('lerner', this)">Read More</button>
+        <a href="https://www.linkedin.com/company/trccapitalpartners/" target="_blank" class="linkedin-btn">LinkedIn</a>
       </div>
 
-      <div class="team-card">
-        <div class="team-photo" style="background-image:url('kellie-jenks.webp');
-        <h3 class="team-name">Kellie Jenks</h3>
-        <span class="team-title">President</span>
-        <p class="team-bio collapsed" id="bio-jenks">Kellie Jenks is the President of TRC Capital Partners, LLC and TRC Ventures, L.P. Kellie is responsible for strategy and execution of the investment and development platforms, as well as the newly formed property management division. Prior to joining Redstone, Kellie was a Vice President at Rockspring Capital and focused on developing institutional equity relationships. She also held positions as Investment Manager of a $400 million office portfolio at the Lionstone Group and an Associate at Goldman Sachs within the Whitehall Funds where she helped manage a $1.2 billion hotel investment platform. Kellie serves on the board of Buffalo Bayou Partnership and Hope Stone, Inc. She received her B.S. in Chemical Engineering from Texas A&amp;M and her M.B.A. from Columbia Business School.</p>
-        <button class="team-toggle" onclick="toggleBio('jenks', this)">Read More</button>
-        <a href="https://www.linkedin.com/company/trccapitalpartners/" target="_blank" class="linkedin-link">LinkedIn</a>
+      <!-- KELLIE JENKS -->
+      <div class="team-card-v2">
+        <img class="team-headshot" src="kellie-jenks.webp" alt="Kellie Jenks, President of TRC Capital Partners">
+        <h3>Kellie Jenks</h3>
+        <span class="title-label">President</span>
+        <p class="bio collapsed" id="bio-jenks">Kellie Jenks is the President of TRC Capital Partners, LLC and TRC Ventures, L.P. Kellie is responsible for strategy and execution of the investment and development platforms, as well as the property management division. Prior to joining TRC, Kellie was a Vice President at Rockspring Capital focused on developing institutional equity relationships. She also held positions as Investment Manager of a $400 million office portfolio at the Lionstone Group and as an Associate at Goldman Sachs within the Whitehall Funds, where she helped manage a $1.2 billion hotel investment platform. Kellie serves on the board of Buffalo Bayou Partnership and Hope Stone, Inc. She received her B.S. in Chemical Engineering from Texas A&amp;M and her M.B.A. from Columbia Business School.</p>
+        <button class="read-toggle" onclick="toggleBio('jenks', this)">Read More</button>
+        <a href="https://www.linkedin.com/company/trccapitalpartners/" target="_blank" class="linkedin-btn">LinkedIn</a>
       </div>
 
-      <!-- ADD NEW TEAM MEMBERS HERE by copying and editing this block:
-      <div class="team-card">
-        <div class="team-photo" style="background-image:url('YOUR_PHOTO_URL_HERE');height:380px;"></div>
-        <h3 class="team-name">Full Name</h3>
-        <span class="team-title">Title Here</span>
-        <p class="team-bio collapsed" id="bio-UNIQUE_ID">Bio text goes here...</p>
-        <button class="team-toggle" onclick="toggleBio('UNIQUE_ID', this)">Read More</button>
+      <!--
+        TO ADD A NEW TEAM MEMBER: copy the block below, paste it here,
+        and update the name, title, photo, bio, and id.
+
+      <div class="team-card-v2">
+        <img class="team-headshot" src="PHOTO_FILENAME.jpg" alt="Full Name">
+        <h3>Full Name</h3>
+        <span class="title-label">Title Here</span>
+        <p class="bio collapsed" id="bio-UNIQUE_ID">Bio text goes here.</p>
+        <button class="read-toggle" onclick="toggleBio('UNIQUE_ID', this)">Read More</button>
       </div>
       -->
 
@@ -81,8 +175,8 @@
 
 <section class="section navy" style="text-align:center;">
   <div class="container" style="max-width:680px;">
-    <span class="overline" style="color:var(--blue-light);">Work With Us</span>
-    <h2 style="color:var(--white);margin-bottom:1rem;">Interested in Joining TRC?</h2>
+    <span class="overline" style="color:var(--blue-light);">Join TRC</span>
+    <h2 style="color:var(--white);margin-bottom:1rem;">Interested in Working with Us?</h2>
     <span class="rule centered" style="background:var(--blue-light);"></span>
     <p style="color:rgba(255,255,255,0.65);margin-bottom:2rem;">We are always looking for talented professionals with a passion for Texas real estate. Reach out to start the conversation.</p>
     <a href="contact.html" class="btn btn-blue">Get in Touch</a>
@@ -92,25 +186,33 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
-      <div class="footer-brand"><img src="trc-logo.webp" alt="TRC Capital Partners"><p>TRC Capital Partners is a privately held Texas real estate investment firm specializing in acquisitions, development, and active asset management.</p></div>
-      <div class="footer-col"><h4>Company</h4><a href="about.html">About TRC</a><a href="team.html">Our Team</a><a href="portfolio.html">Portfolio</a><a href="contact.html">Contact</a></div>
-      <div class="footer-col"><h4>Portfolio</h4><a href="portfolio.html">1001 McKinney</a><a href="portfolio.html">Regions Financial Center</a><a href="portfolio.html">Fernweh</a><a href="portfolio.html">Galaxy</a><a href="portfolio.html">Lockwood</a></div>
-      <div class="footer-col"><h4>Contact</h4><a href="tel:7132661899">713.266.1899</a><a href="mailto:admin@trccapitalpartners.com">admin@trccapitalpartners.com</a><a>1001 McKinney St, Suite 525, Houston, TX 77002</a></div>
+      <div class="footer-brand">
+        <img src="trc-logo.webp" alt="TRC Capital Partners" style="height:40px;width:auto;margin-bottom:1.2rem;">
+        <p>A privately held Texas real estate investment firm. Acquisitions. Development. Management.</p>
+      </div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About TRC</a><a href="team.html">Our Team</a><a href="why-texas.html">Why Texas</a><a href="insights.html">Insights</a></div>
+      <div class="footer-col"><h4>Portfolio</h4><a href="portfolio.html">1001 McKinney</a><a href="portfolio.html">Regions Financial Center</a><a href="portfolio.html">Fernweh</a><a href="portfolio.html">Galaxy</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="tel:7132661899">713.266.1899</a><a href="mailto:admin@trccapitalpartners.com">admin@trccapitalpartners.com</a><a href="investors.html">Investor Login</a></div>
     </div>
-    <div class="footer-bottom"><span>2025 TRC Capital Partners, LLC. All rights reserved.</span><span>Houston, Texas</span></div>
+    <div class="footer-bottom">
+      <span>2025 TRC Capital Partners, LLC. All rights reserved.</span>
+      <span>Houston, Texas</span>
+    </div>
   </div>
 </footer>
 
 <script>
   document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
   document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+
   function toggleBio(id, btn) {
     const bio = document.getElementById('bio-' + id);
     const collapsed = bio.classList.toggle('collapsed');
     btn.textContent = collapsed ? 'Read More' : 'Read Less';
   }
+
   const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:0.1});
-  document.querySelectorAll('.team-card').forEach(el => obs.observe(el));
+  document.querySelectorAll('.team-card-v2').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
